@@ -1,0 +1,3 @@
+ECHO Starting Process
+.\venv\Scripts\python.exe main.py
+set /p DUMMY=Done, Hit ENTER to close this window...
