@@ -8,7 +8,7 @@ from typing import List, Union, Dict, Iterable
 @dataclass(frozen=True)
 class ParameterToVaryABC(ABC):
     pointer_to_location_in_json: str
-    name_in_json: str
+    parameter_name: str
     json_file_name: str
 
 
@@ -39,7 +39,7 @@ class ExperimentParameterConfigurator:
 
     def __init__(self, parameters_to_vary: Iterable[ExperimentParameterToVary]):
         self._parameters_to_vary = {
-            parameter_to_vary.name_in_json: parameter_to_vary for parameter_to_vary in parameters_to_vary
+            parameter_to_vary.parameter_name: parameter_to_vary for parameter_to_vary in parameters_to_vary
         }
 
     def iterator_for_all_parameter_combinations(self) -> Iterable[List[SelectedParameterToChange]]:
@@ -47,7 +47,7 @@ class ExperimentParameterConfigurator:
             parameters_with_names = [
                 SelectedParameterToChange(
                     pointer_to_location_in_json=self._parameters_to_vary[parameter_name].pointer_to_location_in_json,
-                    name_in_json=self._parameters_to_vary[parameter_name].name_in_json,
+                    name_in_json=self._parameters_to_vary[parameter_name].parameter_name,
                     key=key_creator(parameter_value),
                     value=parameter_value,
                     json_file_name=self._parameters_to_vary[parameter_name].json_file_name,

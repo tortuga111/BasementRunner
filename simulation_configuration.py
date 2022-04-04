@@ -12,7 +12,7 @@ def prepare_experiment_configurations():
     if use_discharge_file := True:
         discharge = ExperimentParameterToVary(
             pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/HYDRAULICS/BOUNDARY/STANDARD/0/discharge_file",
-            name_in_json="discharge_file",
+            parameter_name="discharge_file",
             values=[
                 r"C:/Users/nina/Documents/04_Model_220321/04_Model/01_input_data/Hydrographs/Hydrograph_1_continue_HW2020.txt",
             ],
@@ -21,7 +21,7 @@ def prepare_experiment_configurations():
     else:
         discharge = ExperimentParameterToVary(
             pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/HYDRAULICS/BOUNDARY/STANDARD/0/discharge",
-            name_in_json="discharge",
+            parameter_name="discharge",
             values=[
                 r"C:/Users/nina/Documents/04_Model_220321/04_Model/01_input_data/Hydrographs/SarineHydrograph_1_continue_HW2020_testshort.txt"
             ],
@@ -30,14 +30,14 @@ def prepare_experiment_configurations():
 
     simulation_time = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SIMULATION/TIME/end",
-        name_in_json="end",
+        parameter_name="end",
         values=[120_000],
         json_file_name="simulation.json"
         )
 
     bed_load_inflow = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/MORPHOLOGY/BEDLOAD/BOUNDARY/STANDARD",
-        name_in_json="bed_load_inflow",
+        parameter_name="bed_load_inflow",
         values=[
             [
                 {"boundary_factor": 1.0, "name": "input", "string_name": "input", "type": "transport_capacity"},
@@ -48,7 +48,7 @@ def prepare_experiment_configurations():
     )
     fixed_bed = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/MORPHOLOGY/BEDMATERIAL/FIXED_BED/regions",
-        name_in_json="fixed_bed",
+        parameter_name="fixed_bed",
         json_file_name="model.json",
         values=[
             [

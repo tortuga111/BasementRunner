@@ -13,7 +13,7 @@ from simulation_runner.configurations.configuration_classes import SelectedParam
 def create_experiment(
     experiment_base_run_root_folder: str, parameter_configuration: Iterable[SelectedParameterToChange]
 ):
-    experiment_folder_name = "$".join(f"{p.name_in_json}@{p.key}" for p in parameter_configuration)
+    experiment_folder_name = "$".join(f"{p.parameter_name}@{p.key}" for p in parameter_configuration)
     directory_to_run_experiment = copy_base_experiment(experiment_base_run_root_folder, experiment_folder_name)
     replace_all_parameters_in_model_json_file(directory_to_run_experiment, parameter_configuration)
     return directory_to_run_experiment
