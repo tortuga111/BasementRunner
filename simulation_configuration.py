@@ -5,7 +5,7 @@ from simulation_runner.configurations.configuration_classes import (
 
 
 def get_experiment_base_run_root_folder():
-    return r"C:/Users/nina/Documents/04_Model_220321/04_Model/03_simulation_runs/07_calibration_runs_hw20_new_mesh/base_scenario"
+    return r"D:/Nina/04_Model_220411/04_Model/03_simulation_runs/08_calibration_runs_hw20_beyonce/base_scenario"
 
 
 def prepare_experiment_configurations():
@@ -14,7 +14,7 @@ def prepare_experiment_configurations():
             pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/HYDRAULICS/BOUNDARY/STANDARD/0/discharge_file",
             parameter_name="discharge_file",
             values=[
-                r"C:/Users/nina/Documents/04_Model_220321/04_Model/01_input_data/Hydrographs/Hydrograph_1_continue_HW2020.txt",
+                r"D:/Nina/04_Model_220411/04_Model/01_input_data/Hydrographs/Hydrograph_HW2020.txt",
             ],
             json_file_name="model.json",
         )
@@ -23,7 +23,7 @@ def prepare_experiment_configurations():
             pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/HYDRAULICS/BOUNDARY/STANDARD/0/discharge",
             parameter_name="discharge",
             values=[
-                r"C:/Users/nina/Documents/04_Model_220321/04_Model/01_input_data/Hydrographs/SarineHydrograph_1_continue_HW2020_testshort.txt"
+                r"D:/Nina/04_Model_220411/04_Model/01_input_data/Hydrographs/Hydrograph_HW2020.txt"
             ],
             json_file_name="model.json",
         )
@@ -31,7 +31,7 @@ def prepare_experiment_configurations():
     simulation_time = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SIMULATION/TIME/end",
         parameter_name="end",
-        values=[120_000],
+        values=[600],
         json_file_name="simulation.json"
         )
 
@@ -42,6 +42,10 @@ def prepare_experiment_configurations():
             [
                 {"boundary_factor": 1.0, "name": "input", "string_name": "input", "type": "transport_capacity"},
                 {"boundary_factor": 1.0, "name": "output", "string_name": "output", "type": "transport_capacity"},
+            ],
+            [
+                {"boundary_factor": 0.2, "name": "input", "string_name": "input", "type": "transport_capacity"},
+                {"boundary_factor": 0.2, "name": "output", "string_name": "output", "type": "transport_capacity"},
             ]
         ],
         json_file_name="model.json",
