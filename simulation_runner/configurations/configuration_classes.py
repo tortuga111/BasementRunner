@@ -24,7 +24,7 @@ class SelectedParameterToChange(ParameterToVaryABC):
 
 
 def key_creator(value: any) -> str:
-    if isinstance(value, float)  or isinstance(value, int):
+    if isinstance(value, float) or isinstance(value, int):
         return str(value)
     if isinstance(value, str):
         return value.split("/")[-1]
@@ -47,7 +47,7 @@ class ExperimentParameterConfigurator:
             parameters_with_names = [
                 SelectedParameterToChange(
                     pointer_to_location_in_json=self._parameters_to_vary[parameter_name].pointer_to_location_in_json,
-                    name_in_json=self._parameters_to_vary[parameter_name].parameter_name,
+                    parameter_name=self._parameters_to_vary[parameter_name].parameter_name,
                     key=key_creator(parameter_value),
                     value=parameter_value,
                     json_file_name=self._parameters_to_vary[parameter_name].json_file_name,
