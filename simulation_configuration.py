@@ -14,7 +14,7 @@ def prepare_experiment_configurations():
             pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/HYDRAULICS/BOUNDARY/STANDARD/0/discharge_file",
             parameter_name="discharge_file",
             values=[
-                r"C:/Users/nina/Documents/04_Model_220321/04_Model/01_input_data/Hydrographs/Hydrograph_1_continue_HW2020.txt",
+                r"C:/Users/nina/Documents/04_Model_220321/04_Model/01_input_data/Hydrographs/Hydrograph_HW2020.txt",
             ],
             json_file_name="model.json",
         )
@@ -31,21 +31,22 @@ def prepare_experiment_configurations():
     simulation_time = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SIMULATION/TIME/end",
         parameter_name="end",
-        values=[120_000],
-        json_file_name="simulation.json"
-        )
+        values=[900],
+        json_file_name="simulation.json",
+    )
 
     bed_load_inflow = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/MORPHOLOGY/BEDLOAD/BOUNDARY/STANDARD",
         parameter_name="bed_load_inflow",
         values=[
             [
-                {"boundary_factor": 1.0, "name": "input", "string_name": "input", "type": "transport_capacity"},
-                {"boundary_factor": 1.0, "name": "output", "string_name": "output", "type": "transport_capacity"},
-            ]
+                {"boundary_factor": 1, "name": "input", "string_name": "input", "type": "transport_capacity"},
+                {"boundary_factor": 1, "name": "output", "string_name": "output", "type": "transport_capacity"},
+            ],
         ],
         json_file_name="model.json",
     )
+
     fixed_bed = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/MORPHOLOGY/BEDMATERIAL/FIXED_BED/regions",
         parameter_name="fixed_bed",
