@@ -14,6 +14,7 @@ def create_experiment(
     experiment_base_run_root_folder: str, parameter_configuration: Iterable[SelectedParameterToChange]
 ):
     experiment_folder_name = "$".join(f"{p.parameter_name}@{p.key}" for p in parameter_configuration)
+    assert experiment_folder_name.__len__() < 255  # Windows requires any path component to be shorter than that
     directory_to_run_experiment = copy_base_experiment(experiment_base_run_root_folder, experiment_folder_name)
     replace_all_parameters_in_model_json_file(directory_to_run_experiment, parameter_configuration)
     return directory_to_run_experiment

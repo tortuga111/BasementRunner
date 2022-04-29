@@ -27,6 +27,7 @@ def key_creator(value: any) -> str:
     if isinstance(value, float) or isinstance(value, int):
         return str(value)
     if isinstance(value, str):
+        # paths
         return value.split("/")[-1]
     if isinstance(value, dict) or isinstance(value, list):
         return str(int(hashlib.md5(str(value).encode()).hexdigest()[:7], 16))
