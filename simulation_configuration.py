@@ -32,7 +32,7 @@ def prepare_experiment_configurations():
     sim_time = ExperimentParameterToVary(
         pointer_to_location_in_json=r"/SIMULATION/TIME/end",
         parameter_name="end",
-        values=[111900],
+        values=[90000],
         json_file_name="simulation.json",
     )
 
@@ -40,7 +40,7 @@ def prepare_experiment_configurations():
         pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/MORPHOLOGY/BEDLOAD/BOUNDARY/STANDARD/0/boundary_factor",
         parameter_name="boundary",
         json_file_name="model.json",
-        values=[0.2],
+        values=[0],
     )
 
     fixed_bed = ExperimentParameterToVary(
@@ -98,6 +98,33 @@ def prepare_experiment_configurations():
                 {"region_name": "seven", "z_rel": 0.0},
                 {"region_name": "eight", "z_rel": 0.0},
             ],
+            [
+                {"region_name": "one", "z_rel": -0.5},
+                {"region_name": "two", "z_rel": -0.5},
+                {"region_name": "three", "z_rel": 0.0},
+                {"region_name": "four", "z_rel": 0.0},
+                {"region_name": "five", "z_rel": 0.0},
+                {"region_name": "six", "z_rel": 0.0},
+                {"region_name": "seven", "z_rel": 0.0},
+                {"region_name": "eight", "z_rel": 0.0},
+            ],
+            [
+                {"region_name": "three", "z_rel": 0.0},
+                {"region_name": "four", "z_rel": 0.0},
+                {"region_name": "five", "z_rel": 0.0},
+                {"region_name": "six", "z_rel": 0.0},
+                {"region_name": "seven", "z_rel": 0.0},
+                {"region_name": "eight", "z_rel": 0.0},
+            ],
+            [
+                {"region_name": "two", "z_rel": 0.0},
+                {"region_name": "three", "z_rel": 0.0},
+                {"region_name": "four", "z_rel": 0.0},
+                {"region_name": "five", "z_rel": 0.0},
+                {"region_name": "six", "z_rel": 0.0},
+                {"region_name": "seven", "z_rel": 0.0},
+                {"region_name": "eight", "z_rel": 0.0},
+            ],
         ],
     )
 
@@ -112,7 +139,7 @@ def prepare_experiment_configurations():
         pointer_to_location_in_json=r"/SETUP/DOMAIN/BASEPLANE_2D/MORPHOLOGY/BEDMATERIAL/GRAIN_CLASS/diameters",
         parameter_name="grain_size",
         json_file_name="model.json",
-        values=[[0.057]],
+        values=[[0.035], [0.057]],
     )
     return ExperimentParameterConfigurator(
         [discharge, sim_time, boundary_factor, fixed_bed, grain_size, friction]
